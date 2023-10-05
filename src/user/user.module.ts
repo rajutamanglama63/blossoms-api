@@ -1,10 +1,9 @@
-import { Module } from "@nestjs/common";
-import { UserLibModule } from "libs/user/src";
-import { UserController } from "./user.controller";
+import { Module } from '@nestjs/common';
+import { UserLibModule } from 'libs/user/src';
+import { UserController } from './user.controller';
 
 @Module({
-    imports: [UserLibModule],
-    exports: [UserController]
+  imports: [UserLibModule],
+  controllers: [UserController],
 })
-
 export class UserModule {}

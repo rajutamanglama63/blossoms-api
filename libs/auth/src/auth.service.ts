@@ -1,7 +1,15 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from 'libs/common/dto/create-user.dto';
 import { UserService } from 'libs/user/src';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
+import { ConfigService } from '@nestjs/config';
+
+const configService = new ConfigService();
 
 @Injectable()
 export class AuthService {
@@ -23,5 +31,35 @@ export class AuthService {
     const newUser = await this.userService.create(userDto);
 
     return newUser;
+  }
+
+  async signin(email: string, password: string) {
+    let userData: any;
+
+    const [user] = await this.userService.find(email);
+    if (!user) {
+      throw new NotFoundException('User not found!');
+    } else {
+      const { password, ...userDataObject } = user;
+      userData = userDataObject;
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      throw new BadRequestException('Invalid credentials');
+    }
+
+    const userDetailsForToken = {
+      email: user.email,
+      id: user.id,
+    };
+
+    const token = jwt.sign(
+      userDetailsForToken,
+      configService.get('JWT_SECRET'),
+      { expiresIn: '1h' },
+    );
+
+    return { userData, token };
   }
 }

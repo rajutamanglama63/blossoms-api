@@ -12,4 +12,11 @@ export class AuthController {
 
     return user;
   }
+
+  @Post('/login')
+  async login(@Body() body: CreateUserDto) {
+    const user = await this.authService.signin(body.email, body.password);
+
+    return user;
+  }
 }
