@@ -5,9 +5,16 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { IconModule } from './icon/icon.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({}), DatabaseModule, UserModule, AuthModule],
+  imports: [
+    ConfigModule.forRoot({}),
+    DatabaseModule,
+    UserModule,
+    AuthModule,
+    IconModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
