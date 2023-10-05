@@ -3,7 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateUserDto } from 'libs/common/dto/create-user.dto';
+import { CreateUserDto } from 'libs/common/src/dto/create-user.dto';
 import { UserService } from 'libs/user/src';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
