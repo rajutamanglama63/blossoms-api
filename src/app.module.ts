@@ -6,6 +6,7 @@ import { DatabaseModule } from './database.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { IconModule } from './icon/icon.module';
+import { ColorModule } from './color/color.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { IconModule } from './icon/icon.module';
     UserModule,
     AuthModule,
     IconModule,
+    ColorModule
   ],
   controllers: [AppController],
   providers: [AppService],
