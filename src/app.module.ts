@@ -7,6 +7,8 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { IconModule } from './icon/icon.module';
 import { ColorModule } from './color/color.module';
+import { CatagoriesModule } from './catagories/catagories.module';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -15,7 +17,9 @@ import { ColorModule } from './color/color.module';
     UserModule,
     AuthModule,
     IconModule,
-    ColorModule
+    ColorModule,
+    CatagoriesModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],

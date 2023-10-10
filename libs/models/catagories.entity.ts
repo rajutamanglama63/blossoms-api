@@ -10,7 +10,7 @@ export class Catagories extends BaseEntity {
   name: string;
 
   @Column({ name: 'is_Editable', type: 'boolean' })
-  isEditable?: false;
+  isEditable?: boolean;
 
   @OneToOne(() => Color)
   @JoinColumn()

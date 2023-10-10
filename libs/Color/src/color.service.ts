@@ -6,9 +6,19 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ColorService {
-    constructor(@InjectRepository(Color) private repo: Repository<Color>) {}
+  constructor(@InjectRepository(Color) private repo: Repository<Color>) {}
 
-    create(createColorDto: CreateColorDto) {
-        return this.repo.save(createColorDto)
-    }
+  create(createColorDto: CreateColorDto) {
+    return this.repo.save(createColorDto);
+  }
+
+  async findOne(id: number) {
+    const color = await this.repo.findOne({
+      where: {
+        id,
+      },
+    });
+
+    return color;
+  }
 }

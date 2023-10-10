@@ -11,4 +11,14 @@ export class IconService {
   create(createIconDto: CreateIconDto) {
     return this.repo.save(createIconDto);
   }
+
+  async findOne(id: number) {
+    const icon = await this.repo.findOne({
+      where: {
+        id,
+      },
+    });
+
+    return icon;
+  }
 }

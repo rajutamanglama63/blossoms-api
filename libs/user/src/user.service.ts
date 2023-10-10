@@ -27,8 +27,33 @@ export class UserService {
       where: {
         id,
       },
+      relations: {
+        catagories: true,
+        tasks: true,
+      },
     });
 
     return user;
+  }
+
+  async findAll() {
+    const users = await this.repo.find({
+      relations: {
+        catagories: true,
+        tasks: true,
+      },
+    });
+
+    // return users;
+
+    if (users) {
+      // Create an array of user details without the password field
+      const usersWithoutPassword = users.map(
+        ({ password, ...userDetails }) => userDetails,
+      );
+      return usersWithoutPassword;
+    }
+
+    return [];
   }
 }
