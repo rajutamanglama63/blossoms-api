@@ -13,7 +13,7 @@ export class Task extends BaseEntity {
 
   @OneToOne(() => Catagories)
   @JoinColumn()
-  catagoryId: number;
+  catagory: Catagories;
 
   @ManyToOne(() => User, (user) => user.tasks)
   user: User;

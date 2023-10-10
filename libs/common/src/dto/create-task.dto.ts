@@ -9,4 +9,7 @@ export class CreateTaskDto {
 
   @IsInt()
   catagoryId: number;
+
+  @IsInt()
+  userId: number;
 }

@@ -8,7 +8,7 @@ import { Repository } from 'typeorm';
 export class TaskService {
   constructor(@InjectRepository(Task) private repo: Repository<Task>) {}
 
-  create(createTaskDto: CreateTaskDto) {
-    return this.repo.save(createTaskDto);
+  create(newTask: any) {
+    return this.repo.save(newTask);
   }
 }

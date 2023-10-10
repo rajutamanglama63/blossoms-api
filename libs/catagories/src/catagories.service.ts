@@ -1,10 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ColorService } from 'libs/Color/src/color.service';
-import { IconService } from 'libs/Icon/src/icon.service';
-import { CreateCatagoryDto } from 'libs/common/src/dto/create-catagory.dto';
 import { Catagories } from 'libs/models/catagories.entity';
-import { UserService } from 'libs/user/src';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -15,6 +11,16 @@ export class CatagoriesService {
 
   async create(newCatagory: any) {
     return this.repo.save(newCatagory);
+  }
+
+  async findOne(id: number) {
+    const catagory = await this.repo.findOne({
+      where: {
+        id,
+      },
+    });
+
+    return catagory;
   }
 
   async findAll() {
