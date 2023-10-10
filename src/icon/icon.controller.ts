@@ -7,7 +7,7 @@ export class IconController {
   constructor(private iconService: IconService) {}
 
   @Post('/')
-  async registerUser(@Body() body: CreateIconDto) {
+  async createIcon(@Body() body: CreateIconDto) {
     const icon = await this.iconService.create(body);
 
     return icon;

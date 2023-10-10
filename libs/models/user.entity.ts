@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { Catagories } from './catagories.entity';
+import { Task } from './task.entity';
 
 @Entity({ name: 't_users' })
 export class User extends BaseEntity {
@@ -15,4 +16,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Catagories, (catagory) => catagory.user)
   catagories: Catagories[];
+
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
 }
