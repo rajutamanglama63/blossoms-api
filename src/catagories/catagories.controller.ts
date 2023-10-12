@@ -22,6 +22,21 @@ export class CatagoriesController {
     const isEditable = body.isEditable;
     const name = body.name;
 
+    delete color.createdAt;
+    delete color.updatedAt;
+    delete color.id;
+
+    delete icon.id;
+    delete icon.createdAt;
+    delete icon.updatedAt;
+
+    delete user.id;
+    delete user.createdAt;
+    delete user.updatedAt;
+    delete user.password;
+    delete user.tasks;
+    delete user.catagories;
+
     const newCatagory = {
       color,
       icon,

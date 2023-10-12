@@ -19,6 +19,21 @@ export class TaskController {
     const isCompleted = body.isCompleted;
     const user = await this.userService.findOne(body.userId);
 
+    delete user.password;
+    delete user.catagories;
+    delete user.tasks;
+    delete user.id;
+    delete user.createdAt;
+    delete user.updatedAt;
+
+    delete catagory.id;
+    delete catagory.createdAt;
+    delete catagory.updatedAt;
+    delete catagory.color;
+    delete catagory.icon;
+    delete catagory.user;
+    delete catagory.isEditable;
+
     const newTask = {
       catagory,
       name,
