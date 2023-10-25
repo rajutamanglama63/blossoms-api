@@ -62,4 +62,10 @@ export class AuthService {
 
     return { userData, token };
   }
+
+  async userDecodedFromToken(user) {
+    const decodedUser = jwt.verify(user, configService.get('JWT_SECRET'));
+
+    return decodedUser;
+  }
 }
