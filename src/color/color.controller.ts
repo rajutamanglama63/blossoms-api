@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ColorService } from 'libs/Color/src/color.service';
 import { CreateColorDto } from 'libs/common/src/dto/create-color.dto';
 
@@ -11,5 +11,10 @@ export class ColorController {
     const color = await this.colorService.create(body);
 
     return color;
+  }
+
+  @Get()
+  getColors() {
+    return this.colorService.findColors();
   }
 }

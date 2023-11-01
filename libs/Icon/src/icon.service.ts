@@ -21,4 +21,8 @@ export class IconService {
 
     return icon;
   }
+
+  async findIcons() {
+    return await this.repo.find();
+  }
 }

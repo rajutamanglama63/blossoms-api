@@ -21,4 +21,8 @@ export class ColorService {
 
     return color;
   }
+
+  async findColors() {
+    return await this.repo.find();
+  }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { IconService } from 'libs/Icon/src/icon.service';
 import { CreateIconDto } from 'libs/common/src/dto/create-icon.dto';
 
@@ -11,5 +11,10 @@ export class IconController {
     const icon = await this.iconService.create(body);
 
     return icon;
+  }
+
+  @Get()
+  getIcons() {
+    return this.iconService.findIcons();
   }
 }
