@@ -18,11 +18,10 @@ export class TaskController {
   @Post('/')
   @UseGuards(AuthGuard)
   async createTask(@Body() body: CreateTaskDto, @Req() req) {
-    console.log('user in req obj: ', req.user);
     const decodedUser: any = await this.authService.userDecodedFromToken(
       req.user,
     );
-    console.log('decodedUser from controller: ', decodedUser);
+    console.log('decodedUser from task-controller: ', decodedUser);
 
     if (!decodedUser.id) {
       return 'token missing or invalid';

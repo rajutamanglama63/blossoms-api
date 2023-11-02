@@ -34,4 +34,21 @@ export class CatagoriesService {
 
     return catagories;
   }
+
+  async findUserSpecificCategories(user: any) {
+    const catagories = await this.repo.find({
+      relations: {
+        // user: true,
+        color: true,
+        icon: true,
+      },
+      where: {
+        user,
+      },
+    });
+
+    console.log('data: ', catagories);
+
+    return catagories;
+  }
 }

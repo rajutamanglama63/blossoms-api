@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
   ): boolean | Promise<boolean> | Observable<boolean> {
     const req = context.switchToHttp().getRequest();
 
-    const authorization = req.get('authorization');
+    const authorization = req.get('Authorization');
 
     if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
       req.user = authorization.substring(7);
